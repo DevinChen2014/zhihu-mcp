@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "socialdatax-zhihu": {
+      "url": "https://mcp.socialdatax.com/zhihu/mcp",
+      "headers": {
+        "Authorization": "Bearer ${env:SOCIALDATAX_API_KEY}"
+      }
+    }
+  }
+}
