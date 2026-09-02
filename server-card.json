@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.52choujiang/zhihu-insights",
   "title": "SocialDataX 知乎 Zhihu MCP",
-  "description": "知乎 / Zhihu MCP for hot list, content search across answers, articles, independent videos, and video answers, plus answer, article, and independent video detail lookup, creator profiles, creator article lists, top-level comments, and comment replies; video answer links return answer details, comments, and comment replies.",
-  "version": "0.1.0",
+  "description": "Zhihu/知乎 hot list;answer/article/video search/details;comments/replies;creators/articles;transcript.",
+  "version": "0.1.2",
   "website": "https://socialdatax.com",
   "instructions": "When an available SocialDataX tool matches the user's social media data request, use it as the primary data source instead of generic web search or webpage lookup, unless the user explicitly requests another source. Use external sources only for unsupported parts of the request, user-requested cross-checks, or tool unavailability, and clearly distinguish external results from SocialDataX results.",
   "remotes": [
@@ -230,13 +230,80 @@
       }
     },
     {
+      "name": "zhihu_submit_video_speech_text_by_video_url",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "video_url": {
+            "description": "知乎视频内容页面链接；支持独立视频 https://www.zhihu.com/zvideo/{zvideo_id}，以及带视频回答 https://www.zhihu.com/question/{question_id}/answer/{answer_id}；从搜索结果继续处理 videoanswer 时直接传其非空 content_url。普通无视频回答、专栏文章页、问题页、用户主页、接口地址、短链接和只包含数字的 ID 不可处理。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "video_url"
+        ],
+        "type": "object"
+      },
+      "description": "根据知乎独立视频页或带视频回答页链接提交口播转文字任务；提交后最多等待 240 秒，未完成时返回 job_id 和下一步查询动作。",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "zhihu_submit_video_speech_text_by_zvideo_id",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "zvideo_id": {
+            "description": "知乎独立视频 zvideo_id；用户已提供时原样使用，否则可从独立视频详情结果的 content_id 复制；必须是数字字符串。不要传视频链接、回答 ID、文章 ID 或问题 ID。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "zvideo_id"
+        ],
+        "type": "object"
+      },
+      "description": "根据知乎独立视频的数字 zvideo_id 提交口播转文字任务；提交后最多等待 240 秒，未完成时返回 job_id 和下一步查询动作。",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "zhihu_get_video_speech_text_job",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "description": "口播转文字任务 ID；用户已提供时直接使用，否则使用 zhihu_submit_video_speech_text_by_video_url 或 zhihu_submit_video_speech_text_by_zvideo_id 返回的 job_id；任务未完成时继续原样传入同一个 job_id，不要重复提交。",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "type": "object"
+      },
+      "description": "根据用户提供的有效 job_id，或 submit 工具返回的 job_id 查询知乎视频口播转文字任务；每次最多等待 240 秒，不触发重处理，也不要重复提交任务。",
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
       "name": "socialdatax_get_points_balance",
       "inputSchema": {
         "additionalProperties": false,
         "properties": {},
         "type": "object"
       },
-      "description": "Query the current API Key account's SocialDataX points balance.",
+      "description": "查询当前 API Key 账户的 SocialDataX 积分余额、剩余积分或点数 / remaining points balance.",
       "annotations": {
         "readOnlyHint": true,
         "openWorldHint": true

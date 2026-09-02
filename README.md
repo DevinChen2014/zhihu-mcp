@@ -11,17 +11,17 @@ This public listing provides connection metadata and client examples for the hos
 - Website and API Key access: <https://socialdatax.com/ai?from=github>
 - Registry name: `com.52choujiang/zhihu-insights`
 - Future registry name: `com.socialdatax/zhihu-insights`
-- Current public capability version: `0.1.0`
+- Current public capability version: `0.1.2`. The hosted production server card and `tools/list` are live at `0.1.2` with 11 tools. The official Registry latest remains `0.1.0` pending publication of `0.1.2`.
 
 ## Scope
 
-Use this service for public Zhihu hot-list, content search and detail, creator profiles, creator article lists, top-level comments, and comment replies. It does not provide account login, posting, editing, liking, commenting, following, or other account actions.
+Use this service for public Zhihu hot-list, content search and detail, creator profiles, creator article lists, top-level comments, comment replies, and speech-to-text for independent videos and video answers. Plain answers without video are not processable transcript inputs. It does not provide account login, posting, editing, liking, commenting, following, or other account actions.
 
 ## Tools
 
 | Tool | Purpose |
 | --- | --- |
-| `socialdatax_get_points_balance` | Query the current API Key account balance. |
+| `socialdatax_get_points_balance` | Query the current API Key account's SocialDataX points balance / 积分余额、剩余积分或点数. |
 | `zhihu_get_hot_list` | Read the current hot list. |
 | `zhihu_search_content` | Search public answers, articles, and videos; use when a search term is available, and continue with `page_token`. |
 | `zhihu_get_content_detail_by_url` | Read answer, article, or independent-video details from a URL. |
@@ -29,6 +29,9 @@ Use this service for public Zhihu hot-list, content search and detail, creator p
 | `zhihu_get_user_posted_articles_by_profile_url` | Read a creator's article list from a profile URL and continue with `page_token`. |
 | `zhihu_get_content_comments_by_url` | Read first-level comments from a content URL and continue with `page_token`. |
 | `zhihu_get_comment_replies_by_url` | Read replies from a content URL and first-level comment ID. |
+| `zhihu_submit_video_speech_text_by_video_url` | Submit speech-to-text from an independent `/zvideo/{zvideo_id}` page or a video-answer page URL. |
+| `zhihu_submit_video_speech_text_by_zvideo_id` | Submit an independent-video speech-to-text job from a numeric `zvideo_id`. |
+| `zhihu_get_video_speech_text_job` | Continue querying the same independent-video or video-answer speech-to-text job ID until terminal. |
 
 When a content URL is already available, use the detail or comment tool instead of searching again. When a first-level comment ID is needed for replies, first use `zhihu_get_content_comments_by_url` and reuse the same content URL.
 
