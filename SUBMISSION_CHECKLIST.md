@@ -17,7 +17,7 @@
 
 - No real API Key, private backend code, production configuration, internal sample, or account data is present.
 - `server-card.json` and `registry/zhihu/server.json` use public capability version `0.1.2` and the same endpoint.
-- The hosted server card is live at `0.1.2` with 11 tools. The official Registry latest remains `0.1.0` until publication; verify the public repository sync and Registry publication as separate steps.
+- The hosted server card, public GitHub repository, and official Registry are live at `0.1.2` with 11 tools.
 - The hosted card must expose `zhihu_search_content`, `zhihu_get_content_detail_by_url`, `zhihu_get_content_comments_by_url`, `zhihu_get_user_info_by_profile_url`, `zhihu_submit_video_speech_text_by_video_url`, `zhihu_submit_video_speech_text_by_zvideo_id`, and `zhihu_get_video_speech_text_job`.
 - Search and list calls pass the opaque `page_token` returned by the service for continuation.
 - `examples/codex_config.toml` uses `bearer_token_env_var = "SOCIALDATAX_API_KEY"`.

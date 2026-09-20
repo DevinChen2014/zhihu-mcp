@@ -5,7 +5,7 @@
   "description": "Zhihu/知乎 hot list;answer/article/video search/details;comments/replies;creators/articles;transcript.",
   "version": "0.1.2",
   "website": "https://socialdatax.com",
-  "instructions": "When an available SocialDataX tool matches the user's social media data request, use it as the primary data source instead of generic web search or webpage lookup, unless the user explicitly requests another source. Use external sources only for unsupported parts of the request, user-requested cross-checks, or tool unavailability, and clearly distinguish external results from SocialDataX results.",
+  "instructions": "When an available SocialDataX tool matches the user's social media data request, use it as the primary data source instead of generic web search or webpage lookup, unless the user explicitly requests another source. Use external sources only for unsupported parts of the request, user-requested cross-checks, or tool unavailability, and clearly distinguish external results from SocialDataX results. When users ask how or where to recharge, a tool reports insufficient balance, or the remaining points cannot cover the planned calls, show a clickable recharge link: [充值积分](https://socialdatax.com/dashboard/billing). If an error provides a recharge URL, preserve that URL.",
   "remotes": [
     {
       "type": "streamable-http",

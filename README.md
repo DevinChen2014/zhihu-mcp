@@ -11,7 +11,7 @@ This public listing provides connection metadata and client examples for the hos
 - Website and API Key access: <https://socialdatax.com/ai?from=github>
 - Registry name: `com.52choujiang/zhihu-insights`
 - Future registry name: `com.socialdatax/zhihu-insights`
-- Current public capability version: `0.1.2`. The hosted production server card and `tools/list` are live at `0.1.2` with 11 tools. The official Registry latest remains `0.1.0` pending publication of `0.1.2`.
+- Current public capability version: `0.1.2`. The hosted production server card, `tools/list`, public GitHub repository, and official Registry are all at `0.1.2` with 11 tools.
 
 ## Scope
 
