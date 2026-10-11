@@ -2,6 +2,16 @@
 
 This public listing provides connection metadata and client examples for the hosted SocialDataX Zhihu MCP service. The implementation is privately hosted; this directory contains public connection materials only.
 
+<!-- release-status:start -->
+## Recorded release status
+
+- Local metadata: `0.1.3` with 13 tracked tools. Local metadata alone does not establish publication.
+- Hosted production: `0.1.3` with 13 tools; recorded verification on `2026-10-11 19:32` (Asia/Shanghai).
+- Official MCP Registry: `0.1.3` (`active`); recorded verification on `2026-10-11 19:32` (Asia/Shanghai).
+- Registry evidence: [version-specific Registry record](https://registry.modelcontextprotocol.io/v0.1/servers/com.52choujiang%2Fzhihu-insights/versions/0.1.3).
+- These are recorded observations, not a fresh live check. Public GitHub, npm, and other distribution channels require their own verification.
+<!-- release-status:end -->
+
 ## Service
 
 - Hosted MCP endpoint: `https://mcp.socialdatax.com/zhihu/mcp`
@@ -11,7 +21,6 @@ This public listing provides connection metadata and client examples for the hos
 - Website and API Key access: <https://socialdatax.com/ai?from=github>
 - Registry name: `com.52choujiang/zhihu-insights`
 - Future registry name: `com.socialdatax/zhihu-insights`
-- Current public capability version: `0.1.2`. The hosted production server card, `tools/list`, public GitHub repository, and official Registry are all at `0.1.2` with 11 tools.
 
 ## Scope
 
@@ -21,6 +30,8 @@ Use this service for public Zhihu hot-list, content search and detail, creator p
 
 | Tool | Purpose |
 | --- | --- |
+| `zhihu_search_users` | Search users by keyword; supports opaque `page_token` continuation. |
+| `zhihu_search_suggestions` | Get search-box suggestions for a keyword; no pagination. |
 | `socialdatax_get_points_balance` | Query the current API Key account's SocialDataX points balance / 积分余额、剩余积分或点数. |
 | `zhihu_get_hot_list` | Read the current hot list. |
 | `zhihu_search_content` | Search public answers, articles, and videos; use when a search term is available, and continue with `page_token`. |
@@ -54,3 +65,9 @@ Use the hosted endpoint directly when the client supports authenticated `streama
 For command/stdio-only clients, use `npx -y mcp-remote https://mcp.socialdatax.com/zhihu/mcp --header "Authorization: Bearer <SOCIALDATAX_API_KEY>"`. See the files in [examples](examples/).
 
 Request or manage API access at <https://socialdatax.com/ai?from=github>. Never commit a real API Key.
+
+本地 `0.1.3` 候选新增 `zhihu_search_users`（用户搜索，支持 `page_token`）与 `zhihu_search_suggestions`（搜索联想，不分页）。尚未部署或发布 Registry，发布后需复验。
+
+用户搜索结果还包含累计赞同数 `received_upvote_count`、回答数 `answer_count`、文章数 `article_count`、平台创作总数 `creation_count` 和最近创作时间 `last_creation_time`（秒级 Unix 时间戳）；不可用时为 null。创作总数不通过回答数与文章数相加计算。
+
+搜索建议返回 `text`、`label` 和 `icon_url`；后两项不可用时为 null。`label` 保留平台标记，不承诺完整分类枚举；`icon_url` 用于建议展示。
