@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "socialdatax-zhihu": {
+      "type": "http",
+      "url": "https://mcp.socialdatax.com/zhihu/mcp",
+      "headers": {
+        "Authorization": "Bearer <SOCIALDATAX_API_KEY>",
+        "x-socialdatax-client": "lobehub",
+        "x-socialdatax-source-platform": "lobehub"
+      }
+    }
+  }
+}

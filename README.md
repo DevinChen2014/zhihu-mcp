@@ -1,5 +1,7 @@
 # Zhihu MCP
 
+LobeHub 用户请使用 [LobeHub setup / 接入说明](LOBEHUB.md)，包含专属官网入口、认证和来源配置。
+
 This public listing provides connection metadata and client examples for the hosted SocialDataX Zhihu MCP service. The implementation is privately hosted; this directory contains public connection materials only.
 
 <!-- release-status:start -->
