@@ -73,3 +73,19 @@ Request or manage API access at <https://socialdatax.com/ai?from=github>. Never 
 用户搜索结果还包含累计赞同数 `received_upvote_count`、回答数 `answer_count`、文章数 `article_count`、平台创作总数 `creation_count` 和最近创作时间 `last_creation_time`（秒级 Unix 时间戳）；不可用时为 null。创作总数不通过回答数与文章数相加计算。
 
 搜索建议返回 `text`、`label` 和 `icon_url`；后两项不可用时为 null。`label` 保留平台标记，不承诺完整分类枚举；`icon_url` 用于建议展示。
+
+## Gemini CLI extension
+
+Install this service from its public GitHub repository:
+
+```sh
+gemini extensions install https://github.com/DevinChen2014/zhihu-mcp
+```
+
+When prompted, enter your own `SOCIALDATAX_API_KEY`. Get a key from [SocialDataX](https://socialdatax.com/ai?from=github); business tool calls consume SocialDataX credits. The extension connects directly to the existing hosted MCP endpoint and does not include the private service implementation.
+
+Verify the connection with `gemini mcp list`. To change the saved key, run:
+
+```sh
+gemini extensions config socialdatax-zhihu
+```
